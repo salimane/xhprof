@@ -1,6 +1,6 @@
 <?php
 global $xhprof_baseurl;
-$xhprof_baseurl = "http://xhprof.local";
+$xhprof_baseurl = "xhprof.local";
 function is_ajax() {
   return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
   strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');
@@ -8,7 +8,7 @@ function is_ajax() {
 
 function is_xhprof_url() {
   global $xhprof_baseurl;
-  return $_SERVER['SERVER_NAME'] == $xhprof_baseurl;
+  return isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == $xhprof_baseurl;
 }
 
 if (extension_loaded('xhprof') && !is_xhprof_url()) {
