@@ -453,6 +453,10 @@ function xhprof_aggregate_runs($xhprof_runs_impl, $runs,
  */
 function xhprof_compute_flat_info($raw_data, &$overall_totals) {
 
+    if (empty($raw_data)) {
+        return array();
+    }
+
   global $display_calls;
 
   $metrics = xhprof_get_metrics($raw_data);
@@ -565,6 +569,9 @@ function xhprof_compute_diff($xhprof_data1, $xhprof_data2) {
  * @author Kannan
  */
 function xhprof_compute_inclusive_times($raw_data) {
+    if (empty($raw_data)) {
+        return array();
+    }
   global $display_calls;
 
   $metrics = xhprof_get_metrics($raw_data);
